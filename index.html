@@ -113,11 +113,48 @@
 		            </ul>
 		          </div>
 		        </div>
+
+			<div class="counter-wrap ftco-animate d-flex mt-md-3">
+	        		<div class="text">
+	            		<p class="mb-4">
+	                		<span class="number" id="counter">0</span>
+	                		<span>Days in Quantum Tech</span>
+	            		</p>
+	        		</div>
+	    		</div>
+
+				<script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const startDate = new Date('2022-01-01'); // set the initial date
+            const currentDate = new Date();
+            const daysPassed = Math.floor((currentDate - startDate) / (1000 * 60 * 60 * 24));
+            const counterElement = document.getElementById('counter');
+            const duration = 3000; // duration in milliseconds
+            const frameRate = 60; // 60 frames per second
+            const totalFrames = Math.round(duration / (1000 / frameRate));
+            let frame = 0;
+
+            const updateCounter = () => {
+                frame++;
+                const progress = frame / totalFrames;
+                const currentCount = Math.round(progress * daysPassed);
+                counterElement.textContent = currentCount;
+                if (frame < totalFrames) {
+                    requestAnimationFrame(updateCounter);
+                }
+            };
+
+            requestAnimationFrame(updateCounter);
+        });
+    </script>
+				
 	          <div class="counter-wrap ftco-animate d-flex mt-md-3">
               <div class="text">
               	<p class="mb-4">
 	                <span class="number" data-number="380">0</span>
 	                <span>Days in Quantum Tech</span>
+
+			
                 </p>
                 <p><a href="#" class="btn btn-primary py-3 px-3">Download CV</a></p>
               </div>
